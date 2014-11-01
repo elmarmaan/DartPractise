@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartPractise", "DartPractise\DartPractise.csproj", "{66806009-1D66-4559-BB26-BDC02938B308}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{4541741B-BFE5-4F09-8D74-88CD002DAE5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartPractise.Tests", "DartPractise.Tests\DartPractise.Tests.csproj", "{760EF351-C26E-41E2-B76D-106E14C00309}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartPractise.Tests", "DartPractise.Tests\DartPractise.Tests.csproj", "{33C5F950-E034-4643-993C-59D5A136DA11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartPractise", "DartPractise\DartPractise.csproj", "{81DBD15E-6120-4CAE-8911-D1761F0E623B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{66806009-1D66-4559-BB26-BDC02938B308}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{66806009-1D66-4559-BB26-BDC02938B308}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{66806009-1D66-4559-BB26-BDC02938B308}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{66806009-1D66-4559-BB26-BDC02938B308}.Release|Any CPU.Build.0 = Release|Any CPU
-		{760EF351-C26E-41E2-B76D-106E14C00309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{760EF351-C26E-41E2-B76D-106E14C00309}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{760EF351-C26E-41E2-B76D-106E14C00309}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{760EF351-C26E-41E2-B76D-106E14C00309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4541741B-BFE5-4F09-8D74-88CD002DAE5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4541741B-BFE5-4F09-8D74-88CD002DAE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4541741B-BFE5-4F09-8D74-88CD002DAE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4541741B-BFE5-4F09-8D74-88CD002DAE5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33C5F950-E034-4643-993C-59D5A136DA11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33C5F950-E034-4643-993C-59D5A136DA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33C5F950-E034-4643-993C-59D5A136DA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33C5F950-E034-4643-993C-59D5A136DA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DBD15E-6120-4CAE-8911-D1761F0E623B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DBD15E-6120-4CAE-8911-D1761F0E623B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DBD15E-6120-4CAE-8911-D1761F0E623B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DBD15E-6120-4CAE-8911-D1761F0E623B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
