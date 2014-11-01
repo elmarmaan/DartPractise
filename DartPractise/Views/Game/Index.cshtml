@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Domain.Game>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Practises</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfDartsThrown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsFinished)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfDartsThrown)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFinished)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDateTime)
+        </td>
+        <td>
+            @if (!item.IsFinished)
+            {
+                @Html.ActionLink("Continue", "Continue", new { id=item.Id })
+            }
+            | @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+    
+    <p>
+        @Html.ActionLink("Start new game", "Start")
+    </p>
+</table>

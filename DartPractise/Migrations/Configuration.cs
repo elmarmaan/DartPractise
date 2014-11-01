@@ -1,3 +1,5 @@
+using Domain;
+
 namespace DartPractise.Migrations
 {
     using System.Data.Entity.Migrations;
@@ -7,6 +9,7 @@ namespace DartPractise.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(DartPractise.Contexts.DartPractiseContext context)
@@ -16,13 +19,18 @@ namespace DartPractise.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.GameTypes.AddOrUpdate(
+              g => g.Name,
+              new GameType
+              {
+                  Name = "170"
+              },
+              new GameType
+              {
+                  Name = "Around the world"
+              }
+            );
+            
         }
     }
 }

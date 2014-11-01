@@ -65,8 +65,8 @@ namespace DartPractise.Controllers
         {
             try
             {
-                playerService.UpdatePlayer(player);
-                return View();
+                playerService.UpdatePlayer(player, User.Identity.Name);
+                return View("Index", "Home");
             }
             catch (Exception exception)
             {

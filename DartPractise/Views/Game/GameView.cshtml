@@ -1,0 +1,63 @@
+﻿@model Domain.Game
+
+@{
+    ViewBag.Title = "GameView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.GameType.Name</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfDartsThrown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfDartsThrown)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsFinished)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFinished)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDateTime)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <label for="score_input">Score (.. x ..)</label>
+    <input id="score_input" type="text" name="score"/>
+    <span class="btn btn-default next">Next</span>
+</div>
+
+<script>
+    $('.next').click(function() {
+        var data = {
+            gameId: 4,
+            score: $('#score').val()
+        };
+        $.ajax({
+            type: "POST",
+            url: "/Game/SetScore",
+            data: data,
+            success: function (result) {
+                
+            },
+            error: function(result) {
+                alert(result.Message);
+            }
+        });
+    });
+</script>
