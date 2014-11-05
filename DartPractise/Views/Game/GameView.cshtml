@@ -7,14 +7,14 @@
 
 <h2>@Model.GameType.Name</h2>
 
-<div>
+<div class="game" data-game-id="@Model.Id">
     <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.NumberOfDartsThrown)
         </dt>
 
-        <dd>
+        <dd class="number_darts">
             @Html.DisplayFor(model => model.NumberOfDartsThrown)
         </dd>
 
@@ -22,7 +22,7 @@
             @Html.DisplayNameFor(model => model.IsFinished)
         </dt>
 
-        <dd>
+        <dd class="finished">
             @Html.DisplayFor(model => model.IsFinished)
         </dd>
 
@@ -36,28 +36,15 @@
     </dl>
 </div>
 
-<div>
-    <label for="score_input">Score (.. x ..)</label>
-    <input id="score_input" type="text" name="score"/>
-    <span class="btn btn-default next">Next</span>
+<div class="score">
+    @Html.DisplayFor(model => model.Score)
 </div>
 
-<script>
-    $('.next').click(function() {
-        var data = {
-            gameId: 4,
-            score: $('#score').val()
-        };
-        $.ajax({
-            type: "POST",
-            url: "/Game/SetScore",
-            data: data,
-            success: function (result) {
-                
-            },
-            error: function(result) {
-                alert(result.Message);
-            }
-        });
-    });
-</script>
+@if (!Model.IsFinished)
+{
+    <div class="score_container">
+        <label for="score_input">Score</label>
+        <input id="score_input" type="text" name="score" />
+        <span class="btn btn-default next">Next</span>
+    </div>
+}

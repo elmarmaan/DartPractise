@@ -1,0 +1,69 @@
+﻿@using Domain
+@model IEnumerable<Domain.Game>
+
+<h2>Around the world</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsFinished)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfDartsThrown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDateTime)
+        </th>
+        <th></th>
+    </tr>
+    @{
+        var bestGame = ViewData["Best"] as Game;
+    }
+    <tr class="best">
+        <td>
+            @Html.DisplayFor(modelItem => bestGame.Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => bestGame.IsFinished)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => bestGame.NumberOfDartsThrown)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => bestGame.CreationDateTime)
+        </td>
+        <td>
+            BEST
+        </td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFinished)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfDartsThrown)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDateTime)
+            </td>
+            <td>
+                @if (!item.IsFinished)
+                {
+                    @Html.ActionLink("Continue", "Continue", new { id = item.Id })
+                }
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

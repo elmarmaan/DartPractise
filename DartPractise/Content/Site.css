@@ -19,3 +19,7 @@ textarea {
 .account {
     float: right !important;
 }
+
+.score {
+    font-size: 30px;
+}

@@ -17,6 +17,35 @@ namespace DartPractise.Controllers
         {
             var games = gameService.GetGames(User.Identity.Name);
             ViewData.Model = games;
+            return PartialView();
+        }
+
+        public ActionResult OneHundredAndSeventyOverView()
+        {
+            var games = gameService.GetGames(User.Identity.Name);
+            var orderedGames = games.Where(g => g.GameType.Name == "170").OrderBy(o => o.IsFinished).ThenByDescending(o => o.CreationDateTime);
+
+            var bestGame = orderedGames.Aggregate((c, d) => c.NumberOfDartsThrown < d.NumberOfDartsThrown ? c : d);
+
+            ViewData["Best"] = bestGame;
+            ViewData.Model = orderedGames;
+            return View();
+        }
+
+        public ActionResult AroundTheWorldOverView()
+        {
+            var games = gameService.GetGames(User.Identity.Name);
+            var orderedGames = games.Where(g => g.GameType.Name == "Around the world").OrderBy(o => o.IsFinished).ThenByDescending(o => o.CreationDateTime);
+
+            var bestGame = new Game();
+            if (orderedGames.Count() > 0)
+            {
+                bestGame = orderedGames.Aggregate((c, d) => c.Score > d.Score ? c : d);
+            }
+            
+
+            ViewData["Best"] = bestGame;
+            ViewData.Model = orderedGames;
             return View();
         }
 
@@ -31,8 +60,8 @@ namespace DartPractise.Controllers
         public ActionResult Start(long gameTypeId)
         {
             var gameType = gameService.GetGameType(gameTypeId);
-            gameService.StartNewGame(gameType, User.Identity.Name);
-            return View();
+            var gameId = gameService.StartNewGame(gameType, User.Identity.Name);
+            return Continue(gameId);
         }
 
         public ActionResult Continue(long id)
@@ -48,9 +77,15 @@ namespace DartPractise.Controllers
             return RedirectToAction("Index");
         }
 
-        public void SetScore(long gameId, int score)
+        public JsonResult SetScore(long gameId, int score)
         {
-            throw new NotImplementedException();
+            var game = gameService.SetScore(gameId, score);
+            return Json(new
+            {
+                Score = game.Score,
+                NumberOfDartsThrown = game.NumberOfDartsThrown,
+                IsFinished = game.IsFinished
+            });
         }
     }
 }
